@@ -27,7 +27,7 @@ st.set_page_config(page_title="Prediksi Kompetensi Guru", layout="wide")
 # ==========================================
 @st.cache_data
 def get_mapping_file():
-    sheet_url = 'https://docs.google.com/spreadsheets/d/1K74HlgKj19djz9EUeg0ZUIWMzM9Kt4TvS0oPn_CDsSc/edit?usp=sharing'
+    sheet_url = 'https://docs.google.com/spreadsheets/d/1WduVmr2BQQU49bki21NcU3v9lDjDzl-nQvHRBd4k-bk/edit?gid=0#gid=0'
     excel_export_url = sheet_url.replace('/edit?usp=sharing', '/export?format=xlsx')
     file_name = 'MAPPING.xlsx'
     try:
