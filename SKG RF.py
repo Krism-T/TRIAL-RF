@@ -261,7 +261,6 @@ def main():
                 final_input = final_input.fillna(0)
 
                 try:
-                   try:
                     # 1. Lakukan Prediksi
                     pred_idx = model.predict(final_input)[0]
                     pred_label = le.inverse_transform([pred_idx])[0]
