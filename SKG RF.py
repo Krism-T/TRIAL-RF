@@ -261,6 +261,8 @@ def main():
                 final_input = final_input.fillna(0)
 
                 try:
+                   try:
+                    # 1. Lakukan Prediksi
                     pred_idx = model.predict(final_input)[0]
                     pred_label = le.inverse_transform([pred_idx])[0]
                     proba = model.predict_proba(final_input)[0]
@@ -268,18 +270,35 @@ def main():
                     st.divider()
                     st.markdown(f"### Hasil Prediksi: **{pred_label}**")
                     
-                    # Tambahkan hasil prediksi ke data yang mau disimpan
+                    # 2. Simpan Data ke Google Sheet
                     data_to_save.append(pred_label)
-                    
-                    # === SIMPAN KE GOOGLE SHEET ===
                     simpan_ke_sheet(data_to_save)
-                    # ==============================
 
-                    if "Expert" in pred_label:
-                        st.balloons()
-                        
+                    # 3. Tampilkan Tabel Probabilitas (Persen)
+                    st.markdown("#### Detail Probabilitas:")
+                    
+                    # Buat DataFrame dari hasil probabilitas
+                    prob_df = pd.DataFrame({
+                        "Level Kompetensi": le.classes_,
+                        "Nilai": proba  # Kolom bantu untuk sorting
+                    })
+                    
+                    # Urutkan dari nilai tertinggi ke terendah
+                    prob_df = prob_df.sort_values("Nilai", ascending=False)
+                    
+                    # Format menjadi persen (String)
+                    prob_df["Probabilitas"] = prob_df["Nilai"].apply(lambda x: f"{x:.1%}")
+                    
+                    # Tampilkan hanya kolom Level dan Probabilitas (tanpa kolom bantu Nilai)
+                    st.dataframe(
+                        prob_df[["Level Kompetensi", "Probabilitas"]], 
+                        use_container_width=True, 
+                        hide_index=True
+                    )
+
+                    # (Kode st.balloons() sudah dihapus dari sini)
+
                 except Exception as e:
                     st.error(f"Error saat prediksi: {e}")
-
 if __name__ == "__main__":
     main()
