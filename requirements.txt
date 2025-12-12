@@ -1,8 +1,0 @@
-streamlit
-pandas
-numpy
-scikit-learn
-imbalanced-learn
-requests
-joblib
-openpyxl
