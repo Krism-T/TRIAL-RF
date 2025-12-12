@@ -6,3 +6,5 @@ imbalanced-learn==0.12.4
 requests
 joblib
 openpyxl
+gspread
+google-auth
