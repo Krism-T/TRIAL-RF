@@ -27,7 +27,7 @@ st.set_page_config(page_title="Prediksi Kompetensi Guru", layout="wide")
 # ==========================================
 @st.cache_data
 def get_mapping_file():
-    sheet_url = 'https://docs.google.com/spreadsheets/d/1WduVmr2BQQU49bki21NcU3v9lDjDzl-nQvHRBd4k-bk/edit?gid=0#gid=0'
+    sheet_url = 'https://docs.google.com/spreadsheets/d/1K74HlgKj19djz9EUeg0ZUIWMzM9Kt4TvS0oPn_CDsSc/edit?usp=sharing'
     excel_export_url = sheet_url.replace('/edit?usp=sharing', '/export?format=xlsx')
     file_name = 'MAPPING.xlsx'
     try:
@@ -134,7 +134,7 @@ def simpan_ke_sheet(data_row):
         # 2. Buka Spreadsheet (Ganti URL ini dengan URL Google Sheet 'DATABASE' Anda)
         # SANGAT DISARANKAN BUAT SHEET BARU KHUSUS LOG, JANGAN CAMPUR DENGAN DATA TRAINING
         # Pastikan sheet ini sudah di-SHARE ke email service account
-        SHEET_URL = "https://docs.google.com/spreadsheets/d/1AfcS9SYlAba88BgWKhOIyKNR8TMlh379wvi8RlklVCI/edit?usp=sharing"
+        SHEET_URL = "https://docs.google.com/spreadsheets/d/1WduVmr2BQQU49bki21NcU3v9lDjDzl-nQvHRBd4k-bk/edit?gid=0#gid=0"
         
         sh = gc.open_by_url(SHEET_URL)
         
