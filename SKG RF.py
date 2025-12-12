@@ -142,6 +142,12 @@ def load_mapping_dict(path):
 def main():
     st.title("👨‍🏫 Prediksi Level Kompetensi Guru (SKG 360)")
     
+    # --- TAMBAHAN BARU DISINI ---
+    st.markdown("""
+    Aplikasi ini menggunakan model **Random Forest** untuk memprediksi level kompetensi guru 
+    berdasarkan data demografis/latar belakang guru.
+    """)
+    
     # 1. Persiapkan File Mapping & Model
     mapping_file = get_mapping_file()
     if not mapping_file:
@@ -191,7 +197,7 @@ def main():
             input_strings["Region Lahir"] = st.selectbox("Region Lahir", _options("Region Lahir"))
             input_strings["katalog.StatusKaryawanChoices"] = st.selectbox("Status Karyawan", _options("katalog.StatusKaryawanChoices"))
             input_strings["katalog.MaritalStatus"] = st.selectbox("Status Perkawinan", _options("katalog.MaritalStatus"))
-            input_strings["TOEFL>400"] = st.selectbox("Memiliki Sertifikat TOEFL ≥ 400?", _options("TOEFL>400"))
+            input_strings["TOEFL>400"] = st.selectbox("Memiliki Sertifikat TOEFL/IELTS?", _options("TOEFL>400"))
             input_strings["Pendidikan"] = st.selectbox("Pendidikan Terakhir", _options("Pendidikan"))
             input_strings["Prodi"] = st.selectbox("Program Studi S1", _options("Prodi"))
             input_strings["UnivS1"] = st.selectbox("Universitas S1", _options("UnivS1"))
